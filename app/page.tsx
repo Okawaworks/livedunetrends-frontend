@@ -35,15 +35,12 @@ export default function TrendsPage() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [period, setPeriod] = useState<Period>('week');
   const [isPeriodOpen, setIsPeriodOpen] = useState(false);
-
   const [visibleCount, setVisibleCount] = useState(12);
   const [selectedTrend, setSelectedTrend] = useState<any | null>(null);
 
-  // показать ли модалку Telegram
   const [showAuthModal, setShowAuthModal] = useState(true);
 
   function handleTelegramAuth() {
-    // тут будет реальный Telegram Login
     setProfile({
       id: '12345',
       first_name: 'Алексей',
@@ -82,12 +79,12 @@ export default function TrendsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+
       {/* HEADER */}
       <header className="sticky top-0 z-30 border-b border-gray-100 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:gap-4">
-          {/* --- первая строка: логотип, период, аватар --- */}
+
           <div className="flex w-full items-center justify-between gap-3 md:w-auto md:justify-start md:gap-4">
-            {/* ЛОГО */}
             <Image
               src={LOGO_SRC}
               alt="ТРЕНДЫ.РФ"
@@ -97,7 +94,6 @@ export default function TrendsPage() {
               priority
             />
 
-            {/* Период + аватар */}
             <div className="ml-auto flex items-center gap-3 md:ml-0">
               {/* ПЕРИОД */}
               <div className="relative">
@@ -134,7 +130,7 @@ export default function TrendsPage() {
                 )}
               </div>
 
-              {/* АВАТАР (без имени) */}
+              {/* АВАТАР */}
               {profile && (
                 <div className="relative group">
                   <button className="flex items-center">
@@ -147,8 +143,7 @@ export default function TrendsPage() {
                     />
                   </button>
 
-                  {/* dropdown */}
-                  <div className="pointer-events-none absolute right-0 z-40 mt-2 w-56 rounded-xl bg-white p-4 shadow-lg opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">
+                  <div className="pointer-events-none absolute right-0 z-40 mt-2 w-56 rounded-xl bg-white p-4 shadow-lg opacity-0 transition group-hover:opacity-100 group-hover:pointer-events-auto">
                     <div className="mb-2 flex items-center gap-2">
                       <Image
                         src={profile.photo_url}
@@ -181,7 +176,7 @@ export default function TrendsPage() {
             </div>
           </div>
 
-          {/* --- вторая строка: поиск --- */}
+          {/* ПОИСК */}
           <div className="flex w-full md:flex-1 items-center">
             <div className="flex h-12 w-full items-center rounded-full bg-[#F5F6F7] px-5">
               <input
@@ -228,7 +223,6 @@ export default function TrendsPage() {
           onCardClick={(trend) => setSelectedTrend(trend)}
         />
 
-        {/* Загрузить ещё */}
         {visibleCount < filteredTrends.length && (
           <div className="mt-8 flex justify-center">
             <button
@@ -241,7 +235,7 @@ export default function TrendsPage() {
         )}
       </main>
 
-      {/* МОДАЛКА карточки */}
+      {/* МОДАЛКА КАРТОЧКИ */}
       {selectedTrend && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
@@ -251,7 +245,6 @@ export default function TrendsPage() {
             className="flex w-full max-w-5xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl md:flex-row"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* слева — картинка */}
             <div className="relative w-full bg-black md:w-1/2">
               <div className="relative w-full pt-[177%] md:h-full md:pt-0">
                 <img
@@ -262,7 +255,6 @@ export default function TrendsPage() {
               </div>
             </div>
 
-            {/* справа */}
             <div className="flex w-full flex-col gap-4 p-6 md:w-1/2">
               <div className="flex items-start justify-between gap-3">
                 <div>
@@ -288,27 +280,16 @@ export default function TrendsPage() {
 
               <div className="mt-2 flex flex-wrap items-center gap-4 rounded-2xl bg-[#F5F5F7] px-4 py-3 text-xs text-gray-700">
                 <div className="flex items-center gap-1">
-                  <span>👁️</span>
-                  <span>{selectedTrend.views?.toLocaleString('ru-RU') ?? '-'}</span>
+                  👁️ {selectedTrend.views?.toLocaleString('ru-RU') ?? '-'}
                 </div>
-
                 <div className="flex items-center gap-1">
-                  <span>❤️</span>
-                  <span>{selectedTrend.likes?.toLocaleString('ru-RU') ?? '-'}</span>
+                  ❤️ {selectedTrend.likes?.toLocaleString('ru-RU') ?? '-'}
                 </div>
-
                 <div className="flex items-center gap-1">
-                  <span>💾</span>
-                  <span>{selectedTrend.saves?.toLocaleString('ru-RU') ?? '-'}</span>
+                  💾 {selectedTrend.saves?.toLocaleString('ru-RU') ?? '-'}
                 </div>
-
                 <div className="flex items-center gap-1">
-                  <span>VR</span>
-                  <span>
-                    {selectedTrend.engagementRate != null
-                      ? `${selectedTrend.engagementRate}%`
-                      : '-'}
-                  </span>
+                  VR {selectedTrend.engagementRate ?? '-'}%
                 </div>
               </div>
             </div>
@@ -316,17 +297,14 @@ export default function TrendsPage() {
         </div>
       )}
 
-      {/* МОДАЛКА АВТОРИЗАЦИИ TELEGRAM */}
+      {/* 🔥 НОВАЯ МОДАЛКА АВТОРИЗАЦИИ TELEGRAM */}
       {!profile && showAuthModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
-          onClick={() => setShowAuthModal(false)}
-        >
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
           <div
             className="w-full max-w-sm sm:max-w-md rounded-[40px] bg-white px-6 sm:px-8 py-10 text-center shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Иконка Telegram */}
+            {/* Круг с иконкой Telegram */}
             <div className="mx-auto mb-8 flex h-40 w-40 items-center justify-center rounded-full bg-[#E5F2FF]">
               <Image
                 src="/telegram-icon.png"
@@ -337,28 +315,32 @@ export default function TrendsPage() {
               />
             </div>
 
-            {/* Заголовок */}
             <h2 className="mb-3 text-xl sm:text-2xl font-semibold text-gray-900">
               Вход через Telegram
             </h2>
 
-            {/* Описание */}
             <p className="mb-10 text-sm sm:text-base leading-relaxed text-gray-500">
               Мы используем Telegram только для авторизации.
               Никакого спама — только доступ к рейтингу
-              Топ-трендов рилс в&nbsp;10 категориях.
+              Топ-трендов рилс в 10 категориях.
             </p>
 
-            {/* Основная кнопка */}
             <button
               onClick={handleTelegramAuth}
-              className="w-full rounded-full bg-[#FF1753] py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#FF1753]/40 transition-transform hover:scale-[1.02] active:scale-[0.99]"
+              className="
+                w-full rounded-full bg-[#FF1753]
+                py-3.5 sm:py-4 text-sm sm:text-base
+                font-semibold text-white
+                shadow-lg shadow-[#FF1753]/40
+                transition-transform hover:scale-[1.02] active:scale-[0.99]
+              "
             >
               Войти через Telegram
             </button>
           </div>
         </div>
       )}
+
     </div>
   );
 }

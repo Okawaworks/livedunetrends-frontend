@@ -43,7 +43,7 @@ export const mockTrends = [
     saves: 98,
     engagementRate: 6.2,
     postedAt: "4 дня назад",
-    image: "/reels2.jpg",
+    image: "/reels5.jpg",
     category: "Красота и косметика",
   },
   {
