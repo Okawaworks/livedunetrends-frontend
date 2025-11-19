@@ -30,7 +30,7 @@ export const mockTrends = [
     saves: 35,
     engagementRate: 5.3,
     postedAt: "6 дней назад",
-    image: "/public/reels1.jpg",
+    image: "/reels1.jpg",
     category: "Культура и искусство",
   },
   {
@@ -43,7 +43,7 @@ export const mockTrends = [
     saves: 98,
     engagementRate: 6.2,
     postedAt: "4 дня назад",
-    image: "/public/reels2.jpg",
+    image: "/reels2.jpg",
     category: "Красота и косметика",
   },
   {
@@ -56,7 +56,7 @@ export const mockTrends = [
     saves: 50,
     engagementRate: 4.5,
     postedAt: "2 дня назад",
-    image: "/public/reels3.jpg",
+    image: "/reels3.jpg",
     category: "Банки",
   },
   {
@@ -69,7 +69,7 @@ export const mockTrends = [
     saves: 240,
     engagementRate: 7.8,
     postedAt: "1 день назад",
-    image: "/public/reels5.jpg",
+    image: "/reels5.jpg",
     category: "Спорт и отдых",
   },
   {
@@ -82,7 +82,7 @@ export const mockTrends = [
     saves: 115,
     engagementRate: 6.1,
     postedAt: "3 дня назад",
-    image: "/public/reels4.jpg",
+    image: "/reels4.jpg",
     category: "Одежда и стиль",
   },
   {
@@ -95,7 +95,7 @@ export const mockTrends = [
     saves: 32,
     engagementRate: 3.9,
     postedAt: "7 дней назад",
-    image: "/public/reels3.jpg",
+    image: "/reels3.jpg",
     category: "Рестораны и кафе",
   },
   {
@@ -108,7 +108,7 @@ export const mockTrends = [
     saves: 20,
     engagementRate: 2.8,
     postedAt: "5 дней назад",
-    image: "/public/reels1.jpg",
+    image: "/reels1.jpg",
     category: "Ритейл",
   },
   {
@@ -121,7 +121,7 @@ export const mockTrends = [
     saves: 80,
     engagementRate: 4.9,
     postedAt: "8 часов назад",
-    image: "/public/reels2.jpg",
+    image: "/reels2.jpg",
     category: "Спорт и отдых",
   },
   {
@@ -134,7 +134,7 @@ export const mockTrends = [
     saves: 65,
     engagementRate: 5.0,
     postedAt: "6 часов назад",
-    image: "/public/reels4.jpg",
+    image: "/reels4.jpg",
     category: "Культура и искусство",
   },
   {
@@ -147,7 +147,7 @@ export const mockTrends = [
     saves: 120,
     engagementRate: 5.5,
     postedAt: "1 день назад",
-    image: "/public/reels2.jpg",
+    image: "/reels2.jpg",
     category: "Красота и косметика",
   },
   {
@@ -160,7 +160,7 @@ export const mockTrends = [
     saves: 210,
     engagementRate: 8.1,
     postedAt: "2 дня назад",
-    image: "/public/reels1.jpg",
+    image: "/reels1.jpg",
     category: "Спорт и отдых",
   },
   {
@@ -173,7 +173,7 @@ export const mockTrends = [
     saves: 18,
     engagementRate: 4.2,
     postedAt: "11 часов назад",
-    image: "/public/reels3.jpg",
+    image: "/reels3.jpg",
     category: "Рестораны и кафе",
   },
   {
@@ -186,7 +186,7 @@ export const mockTrends = [
     saves: 70,
     engagementRate: 4.9,
     postedAt: "3 часа назад",
-    image: "/public/reels2.jpg",
+    image: "/reels2.jpg",
     category: "Одежда и стиль",
   },
   {
@@ -199,7 +199,7 @@ export const mockTrends = [
     saves: 40,
     engagementRate: 3.8,
     postedAt: "12 часов назад",
-    image: "/public/reels1.jpg",
+    image: "/reels1.jpg",
     category: "Культура и искусство",
   },
   {
@@ -212,7 +212,7 @@ export const mockTrends = [
     saves: 140,
     engagementRate: 6.7,
     postedAt: "9 часов назад",
-    image: "/public/reels2.jpg",
+    image: "/reels2.jpg",
     category: "Красота и косметика",
   },
   {
@@ -225,7 +225,7 @@ export const mockTrends = [
     saves: 180,
     engagementRate: 6.9,
     postedAt: "1 час назад",
-    image: "/public/reels3.jpg",
+    image: "/reels3.jpg",
     category: "Спорт и отдых",
   },
   {
@@ -238,7 +238,7 @@ export const mockTrends = [
     saves: 15,
     engagementRate: 2.4,
     postedAt: "3 дня назад",
-    image: "/public/reels1.jpg",
+    image: "/reels1.jpg",
     category: "Ритейл",
   },
   {
@@ -251,7 +251,7 @@ export const mockTrends = [
     saves: 88,
     engagementRate: 5.7,
     postedAt: "5 дней назад",
-    image: "/public/reels4.jpg",
+    image: "/reels4.jpg",
     category: "Рестораны и кафе",
   },
 ];
