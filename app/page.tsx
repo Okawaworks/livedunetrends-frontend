@@ -93,10 +93,10 @@ export default function TrendsPage() {
             {/* ЛОГО */}
             <Image
               src={LOGO_SRC}
-              alt="LIVEDUNE"
-              width={110}
-              height={30}
-              className="h-[22px] w-auto"
+              alt="ТРЕНДЫ.РФ"
+              width={180}
+              height={48}
+              className="h-[22px] w-auto md:h-[32px]"
               priority
             />
 
