@@ -82,14 +82,11 @@ export default function TrendsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-
       {/* HEADER */}
       <header className="sticky top-0 z-30 border-b border-gray-100 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:gap-4">
-
           {/* --- первая строка: логотип, период, аватар --- */}
           <div className="flex w-full items-center justify-between gap-3 md:w-auto md:justify-start md:gap-4">
-
             {/* ЛОГО */}
             <Image
               src={LOGO_SRC}
@@ -102,7 +99,6 @@ export default function TrendsPage() {
 
             {/* Период + аватар */}
             <div className="ml-auto flex items-center gap-3 md:ml-0">
-
               {/* ПЕРИОД */}
               <div className="relative">
                 <button
@@ -176,15 +172,12 @@ export default function TrendsPage() {
                       {profile.subscription ?? 'Нет подписки'}
                     </div>
 
-                    <button
-                      className="w-full py-2 text-left text-sm text-[#FF1753] hover:underline"
-                    >
+                    <button className="w-full py-2 text-left text-sm text-[#FF1753] hover:underline">
                       Выйти
                     </button>
                   </div>
                 </div>
               )}
-
             </div>
           </div>
 
@@ -325,55 +318,47 @@ export default function TrendsPage() {
 
       {/* МОДАЛКА АВТОРИЗАЦИИ TELEGRAM */}
       {!profile && showAuthModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          onClick={() => setShowAuthModal(false)}
+        >
           <div
-            className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl"
+            className="w-full max-w-sm sm:max-w-md rounded-[40px] bg-white px-6 sm:px-8 py-10 text-center shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[#F5F5F7]">
-                <Image
-                  src={LOGO_SRC}
-                  alt="LIVEDUNE"
-                  width={70}
-                  height={20}
-                  className="h-[18px] w-auto"
-                />
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-gray-900">
-                  Вход через Telegram
-                </div>
-                <div className="text-xs text-gray-500">
-                  Чтобы сохранить ваши фильтры и тренды, войдите в аккаунт.
-                </div>
-              </div>
+            {/* Иконка Telegram */}
+            <div className="mx-auto mb-8 flex h-40 w-40 items-center justify-center rounded-full bg-[#E5F2FF]">
+              <Image
+                src="/telegram-icon.png"
+                alt="Telegram"
+                width={112}
+                height={112}
+                className="h-28 w-28"
+              />
             </div>
 
-            <p className="text-sm text-gray-700 mb-4">
-              Мы используем Telegram только для авторизации. Никакого спама —
-              только доступ к вашим подборкам и истории.
+            {/* Заголовок */}
+            <h2 className="mb-3 text-xl sm:text-2xl font-semibold text-gray-900">
+              Вход через Telegram
+            </h2>
+
+            {/* Описание */}
+            <p className="mb-10 text-sm sm:text-base leading-relaxed text-gray-500">
+              Мы используем Telegram только для авторизации.
+              Никакого спама — только доступ к рейтингу
+              Топ-трендов рилс в&nbsp;10 категориях.
             </p>
 
-            <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:justify-end">
-              <button
-                onClick={() => setShowAuthModal(false)}
-                className="order-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#F5F5F7] transition sm:order-1"
-              >
-                Продолжить без входа
-              </button>
-
-              <button
-                onClick={handleTelegramAuth}
-                className="order-1 rounded-full bg-[#FF1753] px-4 py-2 text-sm font-semibold text-white shadow hover:scale-[1.03] transition sm:order-2"
-              >
-                Войти через Telegram
-              </button>
-            </div>
+            {/* Основная кнопка */}
+            <button
+              onClick={handleTelegramAuth}
+              className="w-full rounded-full bg-[#FF1753] py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#FF1753]/40 transition-transform hover:scale-[1.02] active:scale-[0.99]"
+            >
+              Войти через Telegram
+            </button>
           </div>
         </div>
       )}
-
     </div>
   );
 }
