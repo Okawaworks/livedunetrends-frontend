@@ -79,11 +79,10 @@ export default function TrendsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-
       {/* HEADER */}
       <header className="sticky top-0 z-30 border-b border-gray-100 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:gap-4">
-
+          {/* Лого + период + аватар */}
           <div className="flex w-full items-center justify-between gap-3 md:w-auto md:justify-start md:gap-4">
             <Image
               src={LOGO_SRC}
@@ -95,7 +94,7 @@ export default function TrendsPage() {
             />
 
             <div className="ml-auto flex items-center gap-3 md:ml-0">
-              {/* ПЕРИОД */}
+              {/* Период */}
               <div className="relative">
                 <button
                   onClick={() => setIsPeriodOpen((v) => !v)}
@@ -130,7 +129,7 @@ export default function TrendsPage() {
                 )}
               </div>
 
-              {/* АВАТАР */}
+              {/* Аватар */}
               {profile && (
                 <div className="relative group">
                   <button className="flex items-center">
@@ -143,7 +142,7 @@ export default function TrendsPage() {
                     />
                   </button>
 
-                  <div className="pointer-events-none absolute right-0 z-40 mt-2 w-56 rounded-xl bg-white p-4 shadow-lg opacity-0 transition group-hover:opacity-100 group-hover:pointer-events-auto">
+                  <div className="pointer-events-none absolute right-0 z-40 mt-2 w-56 rounded-xl bg-white p-4 shadow-lg opacity-0 transition group-hover:pointer-events-auto group-hover:opacity-100">
                     <div className="mb-2 flex items-center gap-2">
                       <Image
                         src={profile.photo_url}
@@ -176,7 +175,7 @@ export default function TrendsPage() {
             </div>
           </div>
 
-          {/* ПОИСК */}
+          {/* Поиск */}
           <div className="flex w-full md:flex-1 items-center">
             <div className="flex h-12 w-full items-center rounded-full bg-[#F5F6F7] px-5">
               <input
@@ -191,7 +190,7 @@ export default function TrendsPage() {
         </div>
       </header>
 
-      {/* КАТЕГОРИИ */}
+      {/* Категории */}
       <section className="border-b border-gray-100 bg-white">
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 overflow-x-auto">
           <span className="min-w-fit text-sm font-medium text-gray-500">
@@ -216,7 +215,7 @@ export default function TrendsPage() {
         </div>
       </section>
 
-      {/* КОНТЕНТ */}
+      {/* Контент */}
       <main className="mx-auto max-w-7xl px-4 pt-6 pb-10">
         <Masonry
           trends={visibleTrends}
@@ -235,18 +234,19 @@ export default function TrendsPage() {
         )}
       </main>
 
-      {/* МОДАЛКА КАРТОЧКИ */}
+      {/* 🔹 МОДАЛКА КАРТОЧКИ — ВЕРТИКАЛЬНЫЙ REELS */}
       {selectedTrend && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
           onClick={() => setSelectedTrend(null)}
         >
           <div
-            className="flex w-full max-w-5xl flex-col overflow-hidden rounded-3xl bg-white shadow-2xl md:flex-row"
+            className="flex w-full max-w-4xl flex-col md:flex-row rounded-[32px] overflow-hidden bg-white shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full bg-black md:w-1/2">
-              <div className="relative w-full pt-[177%] md:h-full md:pt-0">
+            {/* Левая колонка: вертикальный рилс 9:16 */}
+            <div className="flex justify-center bg-black md:items-stretch md:w-auto w-full">
+              <div className="relative w-[260px] md:w-[320px] max-w-full pt-[177%]">
                 <img
                   src={selectedTrend.image}
                   alt={selectedTrend.accountName}
@@ -255,41 +255,53 @@ export default function TrendsPage() {
               </div>
             </div>
 
-            <div className="flex w-full flex-col gap-4 p-6 md:w-1/2">
+            {/* Правая колонка: текст + метрики, скролл при длинном описании */}
+            <div className="flex flex-1 flex-col gap-5 p-6 overflow-y-auto max-h-[80vh]">
+              {/* Header */}
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="mb-1 text-sm font-semibold text-gray-900">
+                  <div className="text-lg font-semibold text-gray-900">
                     {selectedTrend.accountName}
                   </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-sm text-gray-400">
                     {selectedTrend.postedAt ?? ''}
                   </div>
                 </div>
 
                 <button
                   onClick={() => setSelectedTrend(null)}
-                  className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600 hover:bg-gray-200"
+                  className="rounded-full bg-gray-100 px-4 py-2 text-sm text-gray-600 hover:bg-gray-200"
                 >
                   Закрыть
                 </button>
               </div>
 
-              <div className="text-sm text-gray-800 leading-relaxed">
+              {/* Текст поста */}
+              <p className="text-sm md:text-base leading-relaxed text-gray-800 whitespace-pre-line">
                 {selectedTrend.description}
-              </div>
+              </p>
 
-              <div className="mt-2 flex flex-wrap items-center gap-4 rounded-2xl bg-[#F5F5F7] px-4 py-3 text-xs text-gray-700">
+              {/* Метрики */}
+              <div className="mt-1 flex flex-wrap items-center gap-4 rounded-2xl bg-[#F5F5F7] px-5 py-4 text-sm text-gray-700">
                 <div className="flex items-center gap-1">
-                  👁️ {selectedTrend.views?.toLocaleString('ru-RU') ?? '-'}
+                  <span>👁️</span>
+                  <span>{selectedTrend.views?.toLocaleString('ru-RU') ?? '-'}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  ❤️ {selectedTrend.likes?.toLocaleString('ru-RU') ?? '-'}
+                  <span>❤️</span>
+                  <span>{selectedTrend.likes?.toLocaleString('ru-RU') ?? '-'}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  💾 {selectedTrend.saves?.toLocaleString('ru-RU') ?? '-'}
+                  <span>💾</span>
+                  <span>{selectedTrend.saves?.toLocaleString('ru-RU') ?? '-'}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  VR {selectedTrend.engagementRate ?? '-'}%
+                  <span>VR</span>
+                  <span>
+                    {selectedTrend.engagementRate != null
+                      ? `${selectedTrend.engagementRate}%`
+                      : '-'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -297,14 +309,13 @@ export default function TrendsPage() {
         </div>
       )}
 
-      {/* 🔥 НОВАЯ МОДАЛКА АВТОРИЗАЦИИ TELEGRAM */}
+      {/* Телеграм-модалка */}
       {!profile && showAuthModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
           <div
             className="w-full max-w-sm sm:max-w-md rounded-[40px] bg-white px-6 sm:px-8 py-10 text-center shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Круг с иконкой Telegram */}
             <div className="mx-auto mb-8 flex h-40 w-40 items-center justify-center rounded-full bg-[#E5F2FF]">
               <Image
                 src="/telegram-icon.png"
@@ -327,20 +338,13 @@ export default function TrendsPage() {
 
             <button
               onClick={handleTelegramAuth}
-              className="
-                w-full rounded-full bg-[#FF1753]
-                py-3.5 sm:py-4 text-sm sm:text-base
-                font-semibold text-white
-                shadow-lg shadow-[#FF1753]/40
-                transition-transform hover:scale-[1.02] active:scale-[0.99]
-              "
+              className="w-full rounded-full bg-[#FF1753] py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#FF1753]/40 transition-transform hover:scale-[1.02] active:scale-[0.99]"
             >
               Войти через Telegram
             </button>
           </div>
         </div>
       )}
-
     </div>
   );
 }
